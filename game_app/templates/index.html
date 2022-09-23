@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        button {
+            width: 100px;
+            height: 30px;
+            background-color: white;
+            box-shadow: 2px 2px black;
+        }
+        .input {
+            height: 30px;
+            width: 120px;
+            border: 2px solid black;
+        }
+        #toolow {
+            border: 2px solid black;
+            background-color: #cf2a27;
+            color: white;
+            height: 200px;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #toohigh {
+            border: 2px solid black;
+            background-color: #cf2a27;
+            height: 200px;
+            width: 200px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #equal {
+            border: 2px solid black;
+            background-color: #009e0f;
+            height: 200px;
+            width: 200px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <form action="/submit" method="POST">
+        {% csrf_token %}
+        <div><h1>Welcome to the greate number game!</h1></div>
+        <div><h3>I am thinking of a number between 1 and 100</h3></div>
+        <h3>take a guess</h3></div>
+        {% if request.session.message == "toolow" %}
+        <p id="toolow">Too Low!</p>
+        {% elif request.session.message == "toohigh" %}
+        <p id="toohigh">too high!</p>
+        {% elif request.session.message == "equal" %}
+        <span id="equal"> correct</span>
+        {% endif %}
+        <br>
+        <input type="number" id="number" name="number" class="input"></input>
+        <br>
+        <div><button type="Submit">Submit</button></div>
+    </form>
+</body>
+</html>
